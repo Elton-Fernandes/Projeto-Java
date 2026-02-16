@@ -3,6 +3,7 @@ package app;
 import dao.ClienteDAO;
 import model.Cliente;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -41,6 +42,13 @@ public class Main {
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
                 case 2:
+                    List<Cliente> clientes = clienteDAO.Listar();
+
+                    for (Cliente c : clientes) {
+                        System.out.println("Nome: " + c.getNome());
+                        System.out.println("Email: " + c.getEmail());
+                        System.out.println("-----------------");
+                    }
 
                     break;
                 case 3:

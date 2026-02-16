@@ -6,6 +6,9 @@ import model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO {
 
@@ -25,6 +28,31 @@ public class ClienteDAO {
         } catch (SQLException e) {
                  throw new RuntimeException("Erro ao inserir o cliente!", e);
         }
+    }
+
+    public List<Cliente> Listar() {
+
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT nome, email FROM Cliente";
+
+        try (Connection conn = Conexao.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+
+                    Cliente cliente = new Cliente(nome, email);
+                    clientes.add(cliente);
+                }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar os clientes!", e);
+        }
+
+        return clientes;
     }
 
     public void alterar (String emailAntigo, Cliente cliente) {
