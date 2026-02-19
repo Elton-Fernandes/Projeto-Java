@@ -30,7 +30,7 @@ public class ClienteDAO {
         }
     }
 
-    public List<Cliente> Listar() {
+    public List<Cliente> listar() {
 
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT nome, email FROM Cliente";
