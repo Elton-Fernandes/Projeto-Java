@@ -66,7 +66,14 @@ public class ClienteDAO {
                 stmt.setString(2, cliente.getEmail());
                 stmt.setString(3, emailAntigo);
 
-                stmt.executeUpdate();
+                int linhasAlteradas = stmt.executeUpdate();
+
+                if (linhasAlteradas == 0) {
+                    System.out.println("Não existe cliente com esse email!");
+                }
+                else {
+                    System.out.println("Dados alterados com sucesso!");
+                }
 
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao alterar os dados do cliente!", e);
@@ -82,7 +89,14 @@ public class ClienteDAO {
 
                 stmt.setString(1, email);
 
-                stmt.executeUpdate();
+                int linhasAlteradas = stmt.executeUpdate();
+
+                if (linhasAlteradas == 0) {
+                    System.out.println("Esse cliente não existe!");
+                }
+                else {
+                    System.out.println("Cliente deletado com sucesso!");
+                }
 
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao deletar o cliente!", e);

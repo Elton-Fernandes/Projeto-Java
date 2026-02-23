@@ -117,7 +117,6 @@ public class Main {
         // Objeto clienteDAO alterando o BD
         clienteDAO.alterar(emailAntigo, cliente);
 
-        System.out.println("Dados alterados com sucesso!");
     }
 
     public static void deletar(Scanner scanner, ClienteDAO clienteDAO) {
@@ -130,7 +129,6 @@ public class Main {
         // objeto clienteDAO deletando o cliente no BD
         clienteDAO.deletar(email);
 
-        System.out.println("Cliente deletado com sucesso!");
     }
 
     public static String validarEmail(String email, Scanner scanner) {
